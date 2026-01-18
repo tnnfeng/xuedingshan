@@ -807,7 +807,7 @@ img {
 @media (max-width: 768px) {
     /* 为页面内容添加上边距，避免被固定导航栏覆盖 */
     body {
-        padding-top: 80px; /* 导航栏高度 + 安全边距 */
+        padding-top: 80px; /* 导航栏高度 + 适当间距 */
     }
     
     .container {
@@ -822,6 +822,11 @@ img {
     .logo-image {
         width: 100px;
         height: auto;
+    }
+    
+    /* 为英雄区域添加额外的上边距 */
+    .hero {
+        margin-top: 0; /* 移除额外的margin */
     }
 
     /* 导航栏移动端优化 */
@@ -1079,7 +1084,7 @@ img {
 @media (max-width: 480px) {
     /* 小屏幕设备的上边距调整 */
     body {
-        padding-top: 70px; /* 导航栏高度 + 安全边距 */
+        padding-top: 70px; /* 导航栏高度 + 适当间距 */
     }
     
     .container {
@@ -1088,6 +1093,7 @@ img {
 
     .hero {
         padding: 0 0.8rem 1rem;
+        margin-top: 0; /* 移除额外的margin */
     }
     
     /* 小屏幕导航栏高度调整 */
