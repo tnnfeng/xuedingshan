@@ -1,6 +1,12 @@
 // 雪顶山矿泉网站交互功能
 
 document.addEventListener('DOMContentLoaded', function() {
+    // 预加载关键图片
+    preloadCriticalImages();
+    
+    // 图片加载优化
+    enhanceImageLoading();
+    
     // 导航菜单切换
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
@@ -14,6 +20,45 @@ document.addEventListener('DOMContentLoaded', function() {
             spans.forEach(span => span.classList.toggle('active'));
         });
     }
+
+// 预加载关键图片（首屏可见的图片）
+function preloadCriticalImages() {
+    const criticalImages = [
+        './images/logo.jpg',
+        './images/factory-1.jpg',
+        './images/factory-2.jpg',
+        './images/factory-3.jpg'
+    ];
+    
+    criticalImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+}
+
+// 图片加载优化：添加加载状态和错误处理
+function enhanceImageLoading() {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    
+    images.forEach(img => {
+        // 添加加载状态类
+        img.classList.add('image-loading');
+        
+        // 图片加载完成后的处理
+        img.addEventListener('load', function() {
+            this.classList.remove('image-loading');
+            this.classList.add('image-loaded');
+        });
+        
+        // 图片加载失败的处理
+        img.addEventListener('error', function() {
+            this.classList.remove('image-loading');
+            this.classList.add('image-error');
+            // 可以设置一个默认的占位图
+            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPuWbvueJh+WKoOi9veWbvuWIhumalOWcsjwvdGV4dD48L3N2Zz4=';
+        });
+    });
+}
     
     // 平滑滚动
     const navLinks = document.querySelectorAll('.nav-menu a');
