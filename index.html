@@ -12,7 +12,7 @@
         <nav class="nav">
             <div class="nav-container">
                 <div class="logo">
-                    <img src="logo.jpg" alt="雪顶山矿泉®" class="logo-image">
+                    <img src="images/logo.jpg" alt="雪顶山矿泉®" class="logo-image">
                 </div>
                 <ul class="nav-menu">
                     <li><a href="#home">首页</a></li>
@@ -45,12 +45,18 @@
                     <p class="hero-subtitle">北纬37°黄金水源带，八缚岭深层岩层过滤</p>
                     <p class="hero-slogan">每一滴都承载着大自然的纯净馈赠</p>
                     <div class="hero-buttons">
-                        <button class="cta-button primary">立即购买</button>
+                        <a href="https://mall.jd.com/index-66504529.html?" target="_blank" class="cta-button primary">立即购买</a>
                         <button class="cta-button secondary">了解更多</button>
                     </div>
                 </div>
                 <div class="hero-image">
-                    <div class="water-bottle"></div>
+                    <div class="factory-gallery">
+                        <img src="images/厂区图1.jpg" alt="雪顶山矿泉水生产基地" class="factory-img main-img">
+                        <div class="factory-thumbnails">
+                            <img src="images/厂区图2.jpg" alt="生产车间" class="factory-thumb">
+                            <img src="images/厂区图3.jpg" alt="现代化灌装线" class="factory-thumb">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -64,7 +70,16 @@
                         <p>八缚岭自然保护区占地15000公顷，森林覆盖率超过80%，每一滴雪顶山矿泉®都承载着大自然的纯净馈赠。</p>
                     </div>
                     <div class="about-image">
-                        <div class="mountain-illustration"></div>
+                        <div class="leopard-gallery">
+                            <div class="leopard-image">
+                                <img src="images/金钱豹1.jpg" alt="八缚岭自然保护区金钱豹栖息地" class="leopard-img">
+                                <p class="image-caption">金钱豹在八缚岭自然保护区的栖息环境</p>
+                            </div>
+                            <div class="leopard-image">
+                                <img src="images/金钱豹2.jpg" alt="八缚岭自然保护区生态环境" class="leopard-img">
+                                <p class="image-caption">保护区内丰富的生物多样性</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,13 +90,17 @@
                 <h2 class="section-title">产品系列</h2>
                 <div class="products-grid">
                     <div class="product-card">
-                        <div class="product-image product-1"></div>
+                        <div class="product-image product-1">
+                            <img src="images/产品5L白底图.jpg" alt="12500经典矿泉水5L装" class="product-img">
+                        </div>
                         <h3>12500经典矿泉水</h3>
                         <p>源自八缚岭深层岩层，富含天然矿物质</p>
                         <span class="price">¥4.5-45</span>
                     </div>
                     <div class="product-card">
-                        <div class="product-image product-2"></div>
+                        <div class="product-image product-2">
+                            <img src="images/母婴用水.jpg" alt="母婴专用矿泉水" class="product-img">
+                        </div>
                         <h3>母婴用水</h3>
                         <p>低钠弱碱性，适合孕妇和婴幼儿</p>
                         <span class="price">¥13.5-45</span>
@@ -130,6 +149,28 @@
             </div>
         </section>
 
+        <!-- 产品认证展示 -->
+        <section class="certification-section">
+            <div class="container">
+                <h2 class="section-title">权威认证</h2>
+                <div class="certification-content">
+                    <div class="certification-image">
+                        <img src="images/富锶认证.png" alt="富锶矿泉水认证" class="certification-img">
+                    </div>
+                    <div class="certification-text">
+                        <h3>富锶矿泉水认证</h3>
+                        <p>雪顶山矿泉®通过国家权威机构检测，富含天然锶元素，锶含量达到优质矿泉水标准。锶元素对人体骨骼健康、心血管系统具有重要保健作用。</p>
+                        <ul class="certification-benefits">
+                            <li>✓ 天然锶元素含量达标</li>
+                            <li>✓ 国家权威机构认证</li>
+                            <li>✓ 优质矿泉水标准</li>
+                            <li>✓ 促进骨骼健康</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contact" class="contact">
             <div class="container">
                 <div class="contact-content">
@@ -138,12 +179,12 @@
                         <p>雪顶山矿泉水有限公司</p>
                         <p>地址：山西省晋中市和顺县横岭镇上北舍村（八缚岭自然保护区井儿沟）</p>
                         <p>电话：400-605-5365</p>
-                        <p>邮箱：info@xuedingshan.com</p>
+                        <p>邮箱：xuedingshankq@163.com</p>
                     </div>
                     <div class="contact-form">
                         <form>
                             <input type="text" placeholder="您的姓名" required>
-                            <input type="email" placeholder="您的邮箱" required>
+                            <input type="tel" placeholder="您的电话" required>
                             <textarea placeholder="您的留言" rows="4" required></textarea>
                             <button type="submit">发送留言</button>
                         </form>
@@ -165,7 +206,12 @@
                 </div>
                 <div class="footer-contact">
                     <p class="service-hotline">全国服务专线 400-605-5365</p>
-                    <p class="follow-us">关注雪顶山</p>
+                    <div class="wechat-qr">
+                        <p class="follow-us">关注雪顶山矿泉微信公众号</p>
+                        <div class="qr-code">
+                            <img src="images/微信公众号二维码.jpg" alt="雪顶山微信公众号" class="qr-image">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">

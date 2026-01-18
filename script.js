@@ -42,6 +42,32 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // 厂区图片切换功能
+    const factoryThumbs = document.querySelectorAll('.factory-thumb');
+    const mainImg = document.querySelector('.main-img');
+    
+    if (factoryThumbs.length > 0 && mainImg) {
+        factoryThumbs.forEach((thumb, index) => {
+            thumb.addEventListener('click', function() {
+                // 切换主图
+                const newSrc = this.src;
+                const newAlt = this.alt;
+                
+                mainImg.src = newSrc;
+                mainImg.alt = newAlt;
+                
+                // 更新缩略图状态
+                factoryThumbs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+            
+            // 默认激活第一张缩略图
+            if (index === 0) {
+                thumb.classList.add('active');
+            }
+        });
+    }
     
     // CTA按钮点击事件
     const ctaButton = document.querySelector('.cta-button');
@@ -67,23 +93,36 @@ document.addEventListener('DOMContentLoaded', function() {
             // 获取表单数据
             const formData = new FormData(this);
             const name = this.querySelector('input[type="text"]').value;
-            const email = this.querySelector('input[type="email"]').value;
+            const phone = this.querySelector('input[type="tel"]').value;
             const message = this.querySelector('textarea').value;
             
             // 简单的表单验证
-            if (!name || !email || !message) {
+            if (!name || !phone || !message) {
                 alert('请填写所有必填字段');
                 return;
             }
             
-            if (!isValidEmail(email)) {
-                alert('请输入有效的邮箱地址');
-                return;
-            }
-            
-            // 模拟表单提交
-            alert('感谢您的留言！我们会尽快与您联系。');
-            this.reset();
+            // 真实表单提交到后端
+            fetch('/api/message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, phone, message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('感谢您的留言！我们会尽快与您联系。');
+                    this.reset();
+                } else {
+                    alert('提交失败，请稍后重试');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('网络错误，请检查网络连接');
+            });
         });
     }
     
