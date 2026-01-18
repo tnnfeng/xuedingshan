@@ -805,6 +805,11 @@ img {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+    /* 为页面内容添加上边距，避免被固定导航栏覆盖 */
+    body {
+        padding-top: 70px;
+    }
+    
     .container {
         padding: 0 1rem;
     }
@@ -854,7 +859,7 @@ img {
     .hero {
         flex-direction: column;
         text-align: center;
-        padding: 80px 1rem 1.5rem;
+        padding: 0 1rem 1.5rem;
         min-height: auto;
     }
 
@@ -1067,7 +1072,7 @@ img {
     }
 
     .hero {
-        padding: 70px 0.8rem 1rem;
+        padding: 0 0.8rem 1rem;
     }
 
     .hero-title {
