@@ -807,11 +807,21 @@ img {
 @media (max-width: 768px) {
     /* 为页面内容添加上边距，避免被固定导航栏覆盖 */
     body {
-        padding-top: 70px;
+        padding-top: 80px; /* 导航栏高度 + 安全边距 */
     }
     
     .container {
         padding: 0 1rem;
+    }
+    
+    /* 移动端导航栏高度调整 */
+    .nav-container {
+        padding: 0.8rem 1rem;
+    }
+    
+    .logo-image {
+        width: 100px;
+        height: auto;
     }
 
     /* 导航栏移动端优化 */
@@ -1067,12 +1077,27 @@ img {
 }
 
 @media (max-width: 480px) {
+    /* 小屏幕设备的上边距调整 */
+    body {
+        padding-top: 70px; /* 导航栏高度 + 安全边距 */
+    }
+    
     .container {
         padding: 0 0.8rem;
     }
 
     .hero {
         padding: 0 0.8rem 1rem;
+    }
+    
+    /* 小屏幕导航栏高度调整 */
+    .nav-container {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .logo-image {
+        width: 90px;
+        height: auto;
     }
 
     .hero-title {
