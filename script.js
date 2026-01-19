@@ -60,32 +60,57 @@ function enhanceImageLoading() {
     });
 }
     
-    // 平滑滚动
+    // 平滑滚动 - 只处理页面内锚点链接
     const navLinks = document.querySelectorAll('.nav-menu a');
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
             const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
             
-            if (targetSection) {
-                // 关闭移动端菜单
+            // 如果是页面内锚点链接（以#开头），则进行平滑滚动处理
+            if (targetId.startsWith('#')) {
+                e.preventDefault();
+                
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    // 关闭移动端菜单
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                    }
+                    
+                    // 计算偏移量（考虑固定导航栏）
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = targetSection.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            // 如果是外部页面链接（如about.html），则允许正常跳转
+            // 为了确保谷歌浏览器兼容性，明确不阻止默认行为
+            else if (targetId.includes('.html') || targetId.includes('http')) {
+                // 允许正常跳转，不阻止默认行为
+                // 可以添加一些额外的处理，比如关闭移动端菜单
                 if (navMenu.classList.contains('active')) {
                     navMenu.classList.remove('active');
                 }
                 
-                // 计算偏移量（考虑固定导航栏）
-                const headerHeight = document.querySelector('.header').offsetHeight;
-                const targetPosition = targetSection.offsetTop - headerHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                // 为了确保兼容性，明确允许默认行为
+                // 不调用e.preventDefault()
             }
         });
+    });
+    
+    // 额外的安全措施：确保所有外部链接都能正常工作
+    document.addEventListener('click', function(e) {
+        const target = e.target.closest('a');
+        if (target && (target.href.includes('.html') || target.href.includes('http'))) {
+            // 确保外部链接能正常跳转
+            // 不阻止默认行为
+        }
     });
 
     // 厂区图片切换功能
