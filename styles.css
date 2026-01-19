@@ -258,6 +258,10 @@ body {
 }
 
 .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     padding: 1rem 2rem;
     font-size: 1.1rem;
     font-weight: 500;
@@ -266,8 +270,11 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: none;
     text-decoration: none;
-    display: inline-block;
     text-align: center;
+}
+
+.cta-button .fas {
+    font-size: 1.2rem;
 }
 
 .cta-button.primary {
@@ -672,6 +679,56 @@ body {
     transform: translateY(-2px);
 }
 
+/* 微信咨询样式 */
+.wechat-consultation {
+    text-align: center;
+    padding: 2rem;
+    background: var(--snow-white);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 119, 182, 0.1);
+}
+
+.wechat-consultation h3 {
+    color: var(--evian-blue);
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.wechat-consultation p {
+    color: var(--mountain-gray);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.wechat-consult-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #07C160, #05A854);
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(7, 193, 96, 0.3);
+}
+
+.wechat-consult-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(7, 193, 96, 0.4);
+    background: linear-gradient(135deg, #05A854, #048A46);
+}
+
+.wechat-consult-btn .fas {
+    font-size: 1.2rem;
+}
+
 /* 页脚 */
 .footer {
     background: linear-gradient(135deg, var(--evian-blue), var(--evian-light-blue));
@@ -1055,6 +1112,26 @@ img {
     .contact-form textarea {
         font-size: 0.9rem;
         padding: 0.8rem;
+    }
+
+    /* 微信咨询移动端优化 */
+    .wechat-consultation {
+        padding: 1.5rem;
+    }
+
+    .wechat-consultation h3 {
+        font-size: 1.3rem;
+    }
+
+    .wechat-consultation p {
+        font-size: 0.9rem;
+    }
+
+    .wechat-consult-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 200px;
     }
 
     /* 页脚移动端优化 */
@@ -1520,11 +1597,303 @@ img {
 }
 
 .identity-label {
-    font-size: 1rem;
-    color: var(--mountain-gray);
+        font-size: 1rem;
+        color: var(--mountain-gray);
+    }
+
+/* 联系我们页面样式 */
+.contact-content {
+    padding: 80px 0;
+    background: var(--pure-white);
+    display: flex;
+    justify-content: center;
 }
 
-@media (max-width: 480px) {
+.handbook-container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.handbook-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.handbook-header h2 {
+    color: var(--evian-blue);
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.handbook-subtitle {
+    font-size: 1.3rem;
+    color: var(--mountain-gray);
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.handbook-section {
+    margin-bottom: 3rem;
+    padding: 2.5rem 3rem;
+    background: var(--snow-white);
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 119, 182, 0.1);
+    width: 100%;
+    max-width: 900px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.handbook-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 119, 182, 0.15);
+}
+
+.handbook-section h3 {
+    color: var(--evian-blue);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    border-left: 6px solid var(--evian-blue);
+    padding-left: 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.advantage-item {
+    background: var(--pure-white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+    text-align: center;
+}
+
+.advantage-item h4 {
+    color: var(--evian-blue);
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.dealer-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--pure-white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+}
+
+.dealer-table th,
+.dealer-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--glacier-blue);
+}
+
+.dealer-table th {
+    background: var(--evian-blue);
+    color: white;
+    font-weight: 600;
+}
+
+.dealer-table tr:last-child td {
+    border-bottom: none;
+}
+
+.condition-list {
+    list-style: none;
+    padding: 0;
+}
+
+.condition-list li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.condition-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--evian-blue);
+    font-weight: bold;
+}
+
+.process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 750px;
+}
+
+.process-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    background: var(--pure-white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+}
+
+.step-number {
+    background: var(--evian-blue);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    color: var(--evian-blue);
+    margin-bottom: 0.5rem;
+}
+
+.support-grid,
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.support-item,
+.rule-item {
+    background: var(--pure-white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+    text-align: center;
+}
+
+.support-item h4,
+.rule-item h4 {
+    color: var(--evian-blue);
+    margin-bottom: 0.8rem;
+}
+
+.contact-info {
+    background: var(--glacier-blue);
+}
+
+.contact-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.contact-item {
+    background: var(--pure-white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.contact-item h4 {
+    color: var(--evian-blue);
+    margin-bottom: 0.5rem;
+}
+
+.contact-phone {
+    color: var(--evian-blue);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.contact-email {
+    color: var(--evian-blue);
+    font-weight: 600;
+}
+
+.cta-section {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: var(--gradient-blue);
+    color: white;
+    border-radius: 10px;
+    margin-top: 3rem;
+    width: 100%;
+    max-width: 750px;
+}
+
+.cta-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.cta-button.primary {
+    background: white;
+    color: var(--evian-blue);
+}
+
+.cta-button.primary:hover {
+    background: var(--evian-blue);
+    color: white;
+    border-color: white;
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: white;
+    border-color: white;
+}
+
+.cta-button.secondary:hover {
+    background: white;
+    color: var(--evian-blue);
+}
+
+@media (max-width: 768px) {
     /* 小屏幕设备的上边距调整 */
     body {
         padding-top: 70px; /* 导航栏高度 + 适当间距 */
@@ -1598,6 +1967,134 @@ img {
 
     .product-card p {
         font-size: 0.85rem;
+    }
+}
+
+/* 联系我们页面移动端优化 */
+@media (max-width: 768px) {
+    .contact-content {
+        padding: 60px 0;
+        justify-content: flex-start;
+    }
+    
+    .handbook-container {
+        padding: 0 1rem;
+        max-width: 100%;
+    }
+    
+    .handbook-header {
+        margin-bottom: 3rem;
+        padding: 0 0.5rem;
+        max-width: 100%;
+    }
+    
+    .handbook-header h2 {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .handbook-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .handbook-section {
+        padding: 1.5rem;
+        margin-bottom: 2.5rem;
+        border-radius: 12px;
+        max-width: 100%;
+    }
+    
+    .handbook-section h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        border-left: 3px solid var(--evian-blue);
+        padding-left: 0.8rem;
+    }
+    
+    .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 100%;
+    }
+    
+    .advantage-item {
+        padding: 1rem;
+    }
+    
+    .table-container {
+        max-width: 100%;
+    }
+    
+    .dealer-table {
+        font-size: 0.8rem;
+    }
+    
+    .dealer-table th,
+    .dealer-table td {
+        padding: 0.5rem 0.3rem;
+    }
+    
+    .process-steps {
+        max-width: 100%;
+    }
+    
+    .process-step {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+        padding: 1rem;
+    }
+    
+    .step-number {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+    
+    .support-grid,
+    .rules-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 100%;
+    }
+    
+    .support-item,
+    .rule-item {
+        padding: 1rem;
+    }
+    
+    .contact-details {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 100%;
+    }
+    
+    .contact-item {
+        padding: 1rem;
+    }
+    
+    .cta-section {
+        padding: 1.5rem 1rem;
+        max-width: 100%;
+        border-radius: 12px;
+    }
+    
+    .cta-section h3 {
+        font-size: 1.4rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    
+    .cta-button {
+        width: 100%;
+        max-width: 200px;
+        text-align: center;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
     }
 }
 
