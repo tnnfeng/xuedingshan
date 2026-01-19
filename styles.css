@@ -831,8 +831,8 @@ body {
 }
 
 .image-loaded {
-    opacity: 0;
-    animation: fadeIn 0.5s ease-in forwards;
+    opacity: 1;
+    animation: none;
 }
 
 @keyframes fadeIn {
@@ -1649,11 +1649,9 @@ img {
     box-shadow: 0 8px 25px rgba(0, 119, 182, 0.1);
     width: 100%;
     max-width: 900px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .handbook-section:hover {
-    transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(0, 119, 182, 0.15);
 }
 
