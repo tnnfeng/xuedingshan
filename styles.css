@@ -95,6 +95,7 @@ body {
     text-decoration: none;
     color: var(--mountain-gray);
     font-weight: 500;
+    -webkit-transition: color 0.3s ease;
     transition: color 0.3s ease;
     position: relative;
 }
@@ -111,6 +112,7 @@ body {
     width: 0;
     height: 2px;
     background: var(--gradient-blue);
+    -webkit-transition: width 0.3s ease;
     transition: width 0.3s ease;
 }
 
@@ -151,7 +153,9 @@ body {
     border-radius: 10px;
     opacity: 0;
     visibility: hidden;
+    -webkit-transform: translateY(-10px);
     transform: translateY(-10px);
+    -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     z-index: 1000;
 }
@@ -159,6 +163,7 @@ body {
 .nav-menu li:hover .submenu {
     opacity: 1;
     visibility: visible;
+    -webkit-transform: translateY(0);
     transform: translateY(0);
 }
 
