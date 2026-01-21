@@ -540,6 +540,7 @@
             <li class="nav-tab" data-tab="products">产品系列</li>
             <li class="nav-tab" data-tab="quality">品质保证</li>
             <li class="nav-tab" data-tab="contact">联系我们</li>
+            <li class="nav-tab" data-tab="health">健康饮水</li>
             <li class="nav-tab" data-tab="images">图片管理</li>
         </ul>
     </nav>
@@ -991,6 +992,66 @@
             </div>
         </div>
 
+        <!-- 健康饮水内容管理 -->
+        <div id="health" class="tab-content">
+            <div class="content-section">
+                <h2 class="section-title">健康饮水内容管理</h2>
+                
+                <div class="form-group">
+                    <label for="healthTitle">健康饮水页面标题</label>
+                    <input type="text" id="healthTitle" placeholder="请输入健康饮水页面标题">
+                </div>
+                
+                <div class="form-group">
+                    <label for="healthSubtitle">健康饮水页面副标题</label>
+                    <input type="text" id="healthSubtitle" placeholder="请输入健康饮水页面副标题">
+                </div>
+                
+                <div class="form-group">
+                    <label for="strontiumTitle">富锶低氘矿泉水标题</label>
+                    <input type="text" id="strontiumTitle" placeholder="请输入富锶低氘矿泉水标题">
+                </div>
+                
+                <div class="form-group">
+                    <label for="strontiumIntro">富锶低氘矿泉水介绍</label>
+                    <textarea id="strontiumIntro" placeholder="请输入富锶低氘矿泉水介绍内容" rows="4"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="strontiumBenefit1">锶元素益处1</label>
+                        <input type="text" id="strontiumBenefit1" placeholder="请输入锶元素益处">
+                    </div>
+                    <div class="form-group">
+                        <label for="strontiumBenefit2">锶元素益处2</label>
+                        <input type="text" id="strontiumBenefit2" placeholder="请输入锶元素益处">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="strontiumBenefit3">锶元素益处3</label>
+                        <input type="text" id="strontiumBenefit3" placeholder="请输入锶元素益处">
+                    </div>
+                    <div class="form-group">
+                        <label for="strontiumBenefit4">锶元素益处4</label>
+                        <input type="text" id="strontiumBenefit4" placeholder="请输入锶元素益处">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sourceFeatures">水源地特色介绍</label>
+                    <textarea id="sourceFeatures" placeholder="请输入水源地特色介绍内容" rows="4"></textarea>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="saveHealthContent()">保存健康饮水内容</button>
+                    <button class="btn btn-secondary" onclick="previewHealthPage()">预览健康饮水页面</button>
+                    <button class="btn btn-warning" onclick="resetHealthContent()">恢复默认</button>
+                </div>
+            </div>
+        </div>
+
         <!-- 图片管理 -->
         <div id="images" class="tab-content">
             <div class="content-section">
@@ -1236,12 +1297,17 @@
                 condition2: '认同品牌理念，遵守品牌使用规范与市场管控规则',
                 condition3: '按对应层级足额支付首批进货款项，具备区域渠道开发能力',
                 condition4: '承诺完成年度销售目标，配合甲方巡检与数据上报',
-                companyName: '山西联拓国际贸易有限公司',
-                companyAddress: '山西省太原市迎泽区桃园南路 31 号鸿富商务楼 10 楼',
-                contactPhone: '400-605-5365',
-                contactEmail: 'xuedingshankq@163.com',
-                ctaTitle: '立即加入雪顶山矿泉大家庭',
-                ctaSubtitle: '携手共创健康饮水新未来'
+            },
+            health: {
+                healthTitle: '健康饮水',
+                healthSubtitle: '让正确喝水成为每个人的健康习惯',
+                strontiumTitle: '雪顶山：富锶低氘矿泉水',
+                strontiumIntro: '雪顶山矿泉不仅是天然矿泉水，更是珍贵的富锶低氘矿泉水。锶元素是人体必需的微量元素，对骨骼健康、心血管系统具有重要保健作用。',
+                strontiumBenefit1: '促进骨骼健康',
+                strontiumBenefit2: '保护心血管',
+                strontiumBenefit3: '增强免疫力',
+                strontiumBenefit4: '低氘特性',
+                sourceFeatures: '雪顶山矿泉源自八缚岭自然保护区，纯净水源的天然屏障。位于北纬37°黄金水源带，太行山脉八缚岭自然保护区，海拔1813.8米，是榆次最高峰。森林覆盖率超过80%，远离城市工业污染，为水源提供天然过滤净化系统。深层岩层自然过滤，富含钙、镁、钾、钠等天然矿物质，符合国家优质矿泉水标准。国家级自然保护区，实施严格的水源地保护政策，确保水源纯净无污染。'
             }
         };
 
@@ -1298,6 +1364,7 @@
             loadProductsContent();
             loadQualityContent();
             loadContactContent();
+            loadHealthContent();
         }
 
         // 首页内容管理函数
@@ -1608,6 +1675,52 @@
             window.open('contact.html', '_blank');
         }
 
+        // 健康饮水内容管理函数
+        function loadHealthContent() {
+            const saved = localStorage.getItem('healthContent');
+            const content = saved ? JSON.parse(saved) : defaultContent.health;
+            
+            document.getElementById('healthTitle').value = content.healthTitle;
+            document.getElementById('healthSubtitle').value = content.healthSubtitle;
+            document.getElementById('strontiumTitle').value = content.strontiumTitle;
+            document.getElementById('strontiumIntro').value = content.strontiumIntro;
+            document.getElementById('strontiumBenefit1').value = content.strontiumBenefit1;
+            document.getElementById('strontiumBenefit2').value = content.strontiumBenefit2;
+            document.getElementById('strontiumBenefit3').value = content.strontiumBenefit3;
+            document.getElementById('strontiumBenefit4').value = content.strontiumBenefit4;
+            document.getElementById('sourceFeatures').value = content.sourceFeatures;
+        }
+
+        function saveHealthContent() {
+            const content = {
+                healthTitle: document.getElementById('healthTitle').value,
+                healthSubtitle: document.getElementById('healthSubtitle').value,
+                strontiumTitle: document.getElementById('strontiumTitle').value,
+                strontiumIntro: document.getElementById('strontiumIntro').value,
+                strontiumBenefit1: document.getElementById('strontiumBenefit1').value,
+                strontiumBenefit2: document.getElementById('strontiumBenefit2').value,
+                strontiumBenefit3: document.getElementById('strontiumBenefit3').value,
+                strontiumBenefit4: document.getElementById('strontiumBenefit4').value,
+                sourceFeatures: document.getElementById('sourceFeatures').value
+            };
+            
+            localStorage.setItem('healthContent', JSON.stringify(content));
+            alert('健康饮水内容保存成功！');
+        }
+
+        function resetHealthContent() {
+            if (confirm('确定要恢复健康饮水默认内容吗？')) {
+                localStorage.removeItem('healthContent');
+                loadHealthContent();
+                alert('健康饮水内容已恢复默认');
+            }
+        }
+
+        function previewHealthPage() {
+            saveHealthContent();
+            window.open('health.html', '_blank');
+        }
+
         // 图片上传功能
         function uploadImages() {
             const fileInput = document.getElementById('imageUpload');
@@ -1636,7 +1749,8 @@
                 about: JSON.parse(localStorage.getItem('aboutContent') || JSON.stringify(defaultContent.about)),
                 products: JSON.parse(localStorage.getItem('productsContent') || JSON.stringify(defaultContent.products)),
                 quality: JSON.parse(localStorage.getItem('qualityContent') || JSON.stringify(defaultContent.quality)),
-                contact: JSON.parse(localStorage.getItem('contactContent') || JSON.stringify(defaultContent.contact))
+                contact: JSON.parse(localStorage.getItem('contactContent') || JSON.stringify(defaultContent.contact)),
+                health: JSON.parse(localStorage.getItem('healthContent') || JSON.stringify(defaultContent.health))
             };
             
             const blob = new Blob([JSON.stringify(allContent, null, 2)], { type: 'application/json' });
