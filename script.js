@@ -40,6 +40,21 @@ document.addEventListener('DOMContentLoaded', function() {
         // 立即显示所有内容
         ensureImmediateDisplay();
         
+        // 滚动时头部导航效果
+        function handleScroll() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+        
+        // 防抖的滚动处理
+        const debouncedScroll = debounce(handleScroll, 10);
+        window.addEventListener('scroll', debouncedScroll);
+        handleScroll(); // 初始化状态
+        
         // 导航菜单切换
         const navToggle = document.querySelector('.nav-toggle');
         const navMenu = document.querySelector('.nav-menu');
@@ -97,6 +112,113 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
+        
+        // 产品卡片悬停效果增强
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-12px) scale(1.03)';
+                this.style.zIndex = '10';
+                
+                // 添加微妙的发光效果
+                this.style.boxShadow = '0 20px 50px rgba(0, 122, 193, 0.25)';
+                
+                // 图片容器额外效果
+                const imageContainer = this.querySelector('.product-image');
+                if (imageContainer) {
+                    imageContainer.style.transform = 'scale(1.1) rotate(2deg)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.zIndex = '1';
+                this.style.boxShadow = '';
+                
+                // 恢复图片容器效果
+                const imageContainer = this.querySelector('.product-image');
+                if (imageContainer) {
+                    imageContainer.style.transform = '';
+                }
+            });
+        });
+        
+        // 产品图片点击放大效果
+        const productImages = document.querySelectorAll('.product-image');
+        productImages.forEach(image => {
+            image.addEventListener('click', function() {
+                const img = this.querySelector('.product-img');
+                if (img) {
+                    // 创建放大视图
+                    const overlay = document.createElement('div');
+                    overlay.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.8);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 1000;
+                        cursor: zoom-out;
+                        backdrop-filter: blur(10px);
+                    `;
+                    
+                    const enlargedImg = document.createElement('img');
+                    enlargedImg.src = img.src;
+                    enlargedImg.style.cssText = `
+                        max-width: 80%;
+                        max-height: 80%;
+                        object-fit: contain;
+                        border-radius: 20px;
+                        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                        animation: zoomIn 0.3s ease;
+                    `;
+                    
+                    overlay.appendChild(enlargedImg);
+                    document.body.appendChild(overlay);
+                    
+                    // 点击关闭
+                    overlay.addEventListener('click', function() {
+                        this.style.animation = 'zoomOut 0.3s ease';
+                        setTimeout(() => {
+                            document.body.removeChild(this);
+                        }, 300);
+                    });
+                }
+            });
+        });
+        
+        // 按钮点击效果
+        const buttons = document.querySelectorAll('.cta-button, .wechat-consult-btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                // 添加点击反馈效果
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+        
+        // 页面加载动画
+        function initPageAnimations() {
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.opacity = '0';
+                heroContent.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    heroContent.style.transition = 'all 0.8s ease';
+                    heroContent.style.opacity = '1';
+                    heroContent.style.transform = 'translateY(0)';
+                }, 200);
+            }
+        }
+        
+        initPageAnimations();
         
         // 额外的安全措施：确保所有外部链接都能正常工作
         document.addEventListener('click', function(e) {
